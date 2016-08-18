@@ -1,22 +1,66 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <%= current_user.email   %>
+                <a href="/users/sign_out"><img src="/image/logout.png"></a>
+            </div>
+        </div>
+    </nav>
+    <div class="bookmarkzone">
+    <div class="popup" onclick="myFunction()">
+      <img src="/image/star.png"> 즐겨찾기
+            <span class="popuptext" id="myPopup"> 
+              <% @book2.each do |b| %>
+                <span><img class ="bookmark"src="<%=b.url%>/favicon.ico" onError="this.src='/image/book.png'" border=0>
+                <a href = "<%=b.url%>" target="_blank"><%= b.name %></a></br></span>
+              <%end%>
+            </span>
+          </div>
+          <a href="/home/bookmark" class="booksetting"><img id="bookset" src="/image/setting.png" style="opacity:0.5;"></a>
+    </div>
+    <div class="bodyform">
+      <div id="logoo" style="margin-top:40px;">
+        <a href="/home/index"><img src="/image/king.png" style="padding-top:30px;"></a>
+      </div>
+      <div class="row" id="ya">
+                <div class="col-md-3"></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/in_cart"><img id="incarti" src="/image/incart.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/index"><img id="carti" src="/image/cart.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/purchase"><img id="purchasei" src="/image/purchase.png" class="navimg"></a></div>
+                <div class="col-md-3"></div>
+      </div>
+      
 <form class="myform" name = "myForm" style="padding-top:30px;" method="POST" enctype="multipart/form-data">
-</br></br></br></br>
-<% @book2.each do |b| %>
+<div class="main2">
+          <div class="row" >
+            <div class="col-md-4"></div>
+            <div class="col-md-4 col-xs-12 col-sm-12" id="box" ><% @book2.each do |b| %>
  <input type="checkbox" name="book[]" value="<%= b.id %>" /><%= b.name%></br>
 <%end%>
 
 <a class="trigger">즐겨찾기 추가</a>
         <div id="overlay_t"></div> 
-          <div id="popup_layer">쇼핑몰 이름을 입력하세요.
-          <input type="text" class="form-control" name="name" placeholder="쇼핑몰 이름">
-          주소를 입력하세요.
-          <input type="text" class="form-control" name="url" placeholder="URL 주소">
+          <div id="popup_layer">쇼핑몰 이름을 입력하세요.</br>
+          <input type="text" class="poptxt" name="name" placeholder="쇼핑몰 이름">
+          </br>주소를 입력하세요.</br>
+          <input type="text" class="poptxt" name="url" placeholder="URL 주소"></br>
           <input type="submit" class="btn btn-default" value="추가" onclick='mySubmit(1)'>
           <button type="button" class="btn btn-default" id ="close">닫기</button>
           </div>
-        </div>
+        
 <input id ="del" type="submit" class="btn btn-default" value="삭제" onclick='mySubmit(2)'>
-
+</div>
+            <div class="col-md-4"></div>
+          </div>
+         </div> 
 </form>
+</div>
+</body>
 <script>
 
 function mySubmit(index) {
@@ -38,8 +82,12 @@ function mySubmit(index) {
 $( document ).ready(function() { 
        $('.trigger').click(function(){ 
         $('#popup_layer, #overlay_t').show(); 
-        $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px"); 
+        $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() -50) + "px"); 
         // $('#popup_layer').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px"); 
+        
+        $('#popup_layer').css("position","absolute");
+    //$('#popup_layer').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
+   // $('#popup_layer').css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
     }); 
     $('#overlay_t, .close').click(function(e){ 
         e.preventDefault(); 
@@ -50,5 +98,54 @@ $( document ).ready(function() {
        $('#popup_layer, #overlay_t').hide(); 
     });
 });
+
+ $(".row a .navimg").mouseenter(function(){
+    
+	    $(this).css("width","120px"); 
+
+  });
+  $(".row a .navimg").mouseleave(function(){
+    
+	    $(this).css("width","110px"); 
+
+  });
+  $("#won").mouseenter(function(){
+    
+	    $(this).css("background-color","#fffef7"); 
+
+  });
+  
+  
+  $("#bookset").mouseenter(function(){
+    
+	    $(this).css("opacity","1"); 
+
+  });
+  $("#bookset").mouseleave(function(){
+    
+	    $(this).css("opacity","0.5"); 
+
+  });
+ 
+  function imgError(image){
+    image.style.display = 'none';
+}
+function myFunction() {
+    var popup = document.getElementById('myPopup');
+    popup.classList.toggle('show');
+}
+MediumLightbox('figure.zoom-effect', {
+			//margin:300
+		});
+		$(function() {
+
+    // Default
+    $('#mouse').mousetip('.tip');
+
+    // Custom Position
+    $('#mouse').mousetip('.tip', 0, 0);
+
+});
     
 </script>
+</html>

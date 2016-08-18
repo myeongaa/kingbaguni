@@ -328,8 +328,8 @@ tr:hover {
     width:400px; 
     padding:50px;
     margin-bottom:30px; 
-    background:#fff; 
-    border:solid 1px #ccc; 
+    background:#f0c800; 
+    border:solid 0px #ccc; 
     position:absolute; 
     top:260px; 
     left:50%; 
@@ -337,9 +337,16 @@ tr:hover {
     box-shadow: 0px 1px 20px #333; 
     z-index:100; 
     display:none;
+    color:#000;
 }
 
-
+#popup_layer .poptxt{
+    outline: none;
+    height: 33px;   
+    padding-left: 10px;
+    padding-right: 10px;
+    border : 2px solid #ffffff;
+}
 .selectbox::-ms-expand { 
   display: none;
   border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;

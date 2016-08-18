@@ -167,6 +167,8 @@ class HomeController < ApplicationController
   def folder   #폴더 관리하는 페이지
     @fol = Folder.all
     @fol2 = Folder.where("user_id LIKE ?",current_user)
+    @book = Bookmark.all
+    @book2 = Bookmark.where("user_id LIKE ?",current_user)
   end
   
   def folder2     #장바구니 폴더 별로 보는 곳
