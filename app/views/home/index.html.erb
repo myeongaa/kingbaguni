@@ -1,0 +1,254 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="/main.css" />
+           
+ 
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <%= current_user.email   %>
+                <a href="/users/sign_out"><img src="/image/logout.png"></a>
+            </div>
+        </div>
+    </nav>
+    <div class="bookmarkzone">
+    <div class="popup" onclick="myFunction()">
+      <img src="/image/star.png"> 즐겨찾기
+            <span class="popuptext" id="myPopup"> 
+              <% @book2.each do |b| %>
+                <span><img class ="bookmark"src="<%=b.url%>/favicon.ico" onError="this.src='/image/book.png'" border=0>
+                <a href = "<%=b.url%>" target="_blank"><%= b.name %></a></br></span>
+              <%end%>
+            </span>
+          </div>
+          <a href="/home/bookmark" class="booksetting"><img id="bookset" src="/image/setting.png" style="opacity:0.5;"></a>
+    </div>
+  <!--  <div class="loading"><img class="loading-image" src="/image/25.gif" alt="Loading..." /></div> -->
+
+    <div class="bodyform">
+      <div id="logoo" style="margin-top:40px;">
+        <a href="/home/index"><img src="/image/king.png" style="padding-top:30px;"></a>
+      </div>
+      <div class="row" id="ya">
+                <div class="col-md-3"></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/in_cart"><img id="incarti" src="/image/incart.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/index"><img id="carti" src="/image/cart2.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/purchase"><img id="purchasei" src="/image/purchase.png" class="navimg"></a></div>
+                <div class="col-md-3"></div>
+      </div>
+      
+        <form class="myform" name = "myForm" style="padding-top:30px;"method="POST" enctype="multipart/form-data">
+        <% sum = 0 %>
+        <% @ca.each do |c|%>
+        <% sum += c.total %>
+      <%end%>
+        <div class="main2">
+          <div class="row" >
+                <div class="col-md-2"></div>
+                <div class="col-md-8 col-xs-12 col-sm-12" id="box" >
+            <div class="row" >
+                <div class="col-md-1 col-xs-1 col-sm-1"></div>
+                <div class="col-md-4 col-xs-8 col-sm-8" id="selectzone">
+                  <input type="image" src="/image/folderset.png" class="btn btn-default" onclick='mySubmit(5)' id="folbut">
+                  <select class="selectbox" name="fol_id" id = "fol" onchange="location.href=this.value"  style="cursor:pointer">
+                    <option>폴더 선택</option>
+                    <% @fol2.each do |f| %>
+                    <option value="/home/<%= f.id %>/folder2"><%= f.name %></option>
+                    <% end %>
+  
+                  </select>
+
+                </div>
+                <div class="col-md-2 col-xs-3 col-sm-3" >
+                </div>
+                <div class="col-md-5"></div>
+          </div>
+          
+          </br>
+
+              <table  class="responstable">
+                <thead>
+                <tr>
+                  <th style="width:10% "><input type="checkbox" name="checkall" onclick="javascript:CheckAll()" style="cursor:pointer"></th>
+                  <th colspan="3">정보</th>
+                  <th style="width:40%" colspan="2">가격</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @ca.each do |c|%>
+                
+                <tr class="cartrow">
+                  <td >
+                    <div class="checks">
+                    <input type="checkbox" name="cart_ids[]" value="<%= c.id %>" style="cursor:pointer"/>
+                    </div>
+                    </td>
+                  <td >
+                      <div class="imagezari">
+                  				<% if c.image_url==nil %>
+                  				 <img src="/image/noimage.png" style="opacity:0.3;">
+                  				<% else%>
+                            <img src="<%= c.image_url %>" style="padding:8px;"/>
+                          <%end%>
+                  		
+                  		</figure>
+                  </td>
+                  <td colspan="2">
+                    <%= c.name %></br> 
+                    <%= c.s_name %> <a href='<%= c.url %>' target="_blank"><img src="/image/go2.png" id="go"></a></br>
+                    
+                    <% unless c.folders.first == nil %>
+                      <%= c.folders.first.name %>
+                      
+                    <%end%>
+                    <a href="/home/<%=c.id%>/edit" ><img src="/image/edit.png" id="editimg"></a>
+                   
+                  </td>
+                  <td >
+                    <%= c.price.to_i %>원<br>
+                    <%= c.d_price.to_i %>원
+                  </td>
+                  <td >
+                    <%= c.total %>원
+                  </td>
+                </tr>
+              
+                <% end %>
+              
+                 <tr id="won">
+                  <td colspan="4"></td>
+                  
+                  <td colspan="2"><%= sum %>원</td>
+                </tr>
+                </tbody>
+               </table>
+               <div class="but">
+          
+                 <input type="image" src="/image/ansayo.png" class="btn btn-default" value="안사요" onclick='mySubmit(1)' id="bu">
+                 <span class="tip">삭제하기</span>
+                 
+                 <input type="image" src="/image/satuhyo.png" class="btn btn-default" value="샀어요" onclick='mySubmit(3)' id ="ba"></br>
+                 <span class="tip">구매한 물건</span>
+               </div>
+              
+          </div>
+       
+                <div class="col-md-2"></div>
+        </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+  
+  
+   // $(document).ready(function(){
+  //      $('#nav').load('/hihihi.html.erb');
+  //  });
+
+   var check = false;
+   var chk = document.getElementsByName("cart_ids[]");
+   
+   function CheckAll(){
+   if(check == false){
+   check = true;
+   for(var i=0; i<chk.length;i++){                                                                    
+   chk[i].checked = true;     //모두 체크
+   }
+   }else{
+   check = false;
+   for(var i=0; i<chk.length;i++){                                                                    
+   chk[i].checked = false;     //모두 해제
+   }
+   }
+  }
+  
+  
+  $('#bu').click(function(){
+      var cnt = $("input:checkbox:checked").length;
+      if(cnt < 1){
+           alert('한 개 이상을 선택하셔야 합니다');
+      }
+  
+  });
+  $('#ba').click(function(){
+      var cnt = $("input:checkbox:checked").length;
+      if(cnt < 1){
+           alert('한 개 이상을 선택하셔야 합니다');
+      }
+  
+  });
+  
+   function mySubmit(index) {
+      if (index == 1) {
+         
+        document.myForm.action='/home/delete';  //삭제 버튼
+        
+      }
+     
+      if (index == 3) {
+        document.myForm.action='/home/purchase2';   //구매한목록으로넘어가는버튼
+      }
+       
+      if (index == 5) {
+        document.myForm.action='/home/folder';   
+      }
+    
+      
+      document.myForm.submit();
+      
+    }
+    
+  
+  $(".row a .navimg").mouseenter(function(){
+    
+	    $(this).css("width","120px"); 
+
+  });
+  $(".row a .navimg").mouseleave(function(){
+    
+	    $(this).css("width","110px"); 
+
+  });
+  $("#won").mouseenter(function(){
+    
+	    $(this).css("background-color","#fffef7"); 
+
+  });
+  
+  
+  $("#bookset").mouseenter(function(){
+    
+	    $(this).css("opacity","1"); 
+
+  });
+  $("#bookset").mouseleave(function(){
+    
+	    $(this).css("opacity","0.5"); 
+
+  });
+ 
+  function imgError(image){
+    image.style.display = 'none';
+}
+function myFunction() {
+    var popup = document.getElementById('myPopup');
+    popup.classList.toggle('show');
+}
+MediumLightbox('figure.zoom-effect', {
+			//margin:300
+		});
+		$(function() {
+
+    // Default
+    $('#mouse').mousetip('.tip');
+
+    // Custom Position
+    $('#mouse').mousetip('.tip', 0, 0);
+
+});
+</script>
+
+</html>

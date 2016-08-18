@@ -1,0 +1,92 @@
+<html>
+  <head>
+          <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <%= current_user.email   %>
+                <a href="/users/sign_out"><img src="/image/logout.png"></a>
+            </div>
+        </div>
+    </nav>
+    <div class="bookmarkzone">
+    <div class="popup" onclick="myFunction()">
+      <img src="/image/star.png"> 즐겨찾기
+            <span class="popuptext" id="myPopup"> 
+              <% @book2.each do |b| %>
+                <span><img class ="bookmark"src="<%=b.url%>/favicon.ico" onError="this.src='/image/book.png'" border=0>
+                <a href = "<%=b.url%>" target="_blank"><%= b.name %></a></br></span>
+              <%end%>
+            </span>
+          </div>
+          <a href="/home/bookmark" class="booksetting"><img id="bookset" src="/image/setting.png" style="opacity:0.5;"></a>
+    </div>
+     <div class="bodyform">
+      <div id="logoo" style="margin-top:40px;">
+        <a href="/home/index"><img src="/image/king.png" style="padding-top:30px;"></a>
+      </div>
+      <div class="row" id="ya">
+                <div class="col-md-3"></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/in_cart"><img id="incarti" src="/image/incart.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/index"><img id="carti" src="/image/cart.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/purchase"><img id="purchasei" src="/image/purchase.png" class="navimg"></a></div>
+                <div class="col-md-3"></div>
+      </div>
+    <form class="myform" style="padding-top:30px;" action="/home/<%=@editcart.id%>/edit2" method="POST" enctype="multipart/form-data">
+      <div class="row" >
+          <div class="col-md-2"></div>
+          <div class="col-md-8 col-xs-12 col-sm-12" id="box" >
+            <div class="incartbox">
+                <div class="form-group">
+              <label>이름</label>  
+              <input type="text" class="wow" name="name" value = "<%= @editcart.name %>">
+                </div>
+              <div class="form-group">
+                  <label>사진</label>
+                  <input type="file" name="pic" accept="image/*">
+                </div>
+                <div class="form-group">
+                  <label >링크</label>
+                  <input type="url" class="wow" name="url" placeholder="링크" value = "<%= @editcart.url %>">
+                </div>
+                <div class="form-group">
+                  <label >쇼핑몰 이름</label>
+                  <input type="text" class="wow" name="s_name" placeholder="쇼핑몰 이름" value = "<%= @editcart.s_name %>">
+                </div>
+                <div class="form-group">
+                  <label >가격</label>
+                  <input type="number" class="wow" name="price" placeholder="가격" value = "<%= @editcart.price %>">
+                </div>
+                <div class="form-group">
+                  <label >배송 비</label>
+                  <input type="number" class="wow" name="d_price" placeholder="배송 비" value = "<%= @editcart.d_price %>">
+                </div>
+                 
+              <label >폴더</label>
+              <select class="wow" name="fol">
+                <option>폴더 선택</option>
+                <% @fol2.each do |f| %>
+                    <% if @editcart.folders.first == nil %>
+                    <% end %>
+                    <% if @editcart.folders.first != nil && @editcart.folders.first.id == f.id%>
+                      <option value="<%= f.id %>" selected="selected"><%= f.name %></option>
+                    <%else%>
+                    <option value="<%= f.id %>"><%= f.name %></option>
+                    <%end%> 
+                  <% end %>
+                
+              </select>
+              </br></br>
+              <div class="but2">
+                <input type="image" id="incabu" src="/image/get2.png" class="btn btn-default" value="담기" >
+            </div>
+            </div>
+            </div>
+          <div class="col-md-2"></div>
+        </div>
+      </form>
+      </div>
+  </body>
+</html>

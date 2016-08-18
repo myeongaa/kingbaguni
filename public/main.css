@@ -1,0 +1,595 @@
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+.bodyform{
+    color: #000000;
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align:center;
+    background-color: #ffffff;
+
+}
+nav{
+    display: block;
+    background-color: #f0c800;
+    height: 30px;
+}
+.navbar {
+  position: relative;
+  min-height: 30px;
+  margin-bottom: 20px;
+  color: #000000;
+  border: 1px solid transparent;
+}
+
+.navbar-static-top {
+  z-index: 1000;
+  border-width: 0 0 1px;
+}
+@media (min-width: 768px) {
+  .navbar-static-top {
+    border-radius: 0;
+  }
+}
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    margin-top: 5px;
+}
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse {
+    width: auto;
+    float: right;
+    border-top: 0;
+    padding-top: 1px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse.in {
+    overflow-y: visible;
+    
+  }
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-static-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.navbar-fixed-top .navbar-collapse,
+.navbar-fixed-bottom .navbar-collapse {
+  max-height: 340px;
+}
+@media (max-device-width: 480px) and (orientation: landscape) {
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    max-height: 200px;
+  }
+}
+
+.container > .navbar-header,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse,
+.container-fluid > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -10px;
+}
+
+.container a img{
+    width:70px;
+}
+.container div{
+    
+}
+
+#lion{
+    width: 50px;
+    position: absolute;
+    text-align: right;
+    top:40px;
+    margin-left: 10px;
+    
+}
+#cross{
+    width: 20px;
+    position: absolute;
+    text-align: right;
+    top:50px;
+    margin-left: 75px;
+}
+#wku{
+    width: 52px;
+    position: absolute;
+    text-align: right;
+    top:40px;
+    margin-left: 110px;
+    
+}
+
+#baimg{
+    width:150px;
+    display:inline-block; 
+}
+
+#king{
+    width:200px;
+    margin-top: 130px;
+
+}
+#myform{
+    margin-top:0px;
+}
+
+#logoo{
+    margin-top: 70px;
+    padding: 40px;
+}
+
+#logoo img{
+    width:200px;
+    margin: 0px;
+    
+    margin-bottom: 0px;
+}
+
+#main{
+    
+        background-image: url("/image/log.png");
+        background-size: 550px;
+        padding: 20px;
+        background-position: center;
+        background-repeat: no-repeat;  
+    	position: relative;
+		max-width: 100%;
+		min-width: 27em;
+		border-radius: _size(border-radius);
+		cursor: default;
+		opacity: 0.8;
+		
+        margin-bottom: 120px;
+        padding-top: 85px;
+        text-align: center;
+		color:#575448;
+}
+
+#log2{
+    padding-top: 20px;
+}
+#log3{
+    padding-top: 75px;
+}
+#log3 h2{
+    margin-top: 0px;
+}
+
+#main h2{
+    font-weight: bold;
+}
+.main2{
+    position: relative;
+    margin:0px;
+}
+
+#box{
+    padding:50px;
+    background-color: #fffef4;
+    border:0px #bdbbbb;
+    border-style: dashed;
+}
+.ha a{
+    color:#575448;
+    text-decoration:none;
+    font-weight: bold;
+}
+.ha a:hover{
+    color:#ffffff;
+    text-decoration:none;
+    font-weight: bold;
+
+}
+
+#copyright{
+    padding-top: 70px;
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+    font-size: 13px;
+	width: 100%;
+	padding-bottom:20px;
+	color:#474D78;
+	position: relative;
+	bottom: 0;
+}
+.myform{
+    margin-top: 0px;
+}
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+
+}
+
+table, th, td {
+    text-align: center;
+    width:100%; /* width값을 주어야 ...(말줄임)가 적용된다. */
+    height:35px;
+    overflow: hidden;
+    text-overflow:ellipsis; /*overflow: hidden; 속성과 같이 써줘야 말줄임 기능이 적용된다.*/
+    white-space:nowrap; /*<td>보다 내용이 길경우 줄바꿈 되는것을 막아준다.*/
+}
+.cartrow{
+    min-height: 100px;
+}
+th,td{
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f0c800;
+    color: white;
+}
+
+
+tr:hover {
+    background-color: #f5f5f5;
+    
+}
+@media (max-width:768px){
+    .responstable td:nth-child(2) img{
+      width:100px;
+    }
+}
+@media (max-width:480px){
+    .responstable td:nth-child(2) img{
+      width:60px;
+    }
+}
+
+.but{
+    padding: 5px;
+    float:right;
+    
+}
+
+.upp{
+    background-color: #f0c800;
+    height:30px;
+    min-width: 100%;
+    margin-top: 0;
+}
+.upp2{
+    float: right;
+    padding-right: 15px;
+    padding-top: 3px;
+}
+
+.row a img{
+    width:110px;
+    
+    
+}
+
+.but input{
+    border:1px solid #f0c800;
+    width:100px;
+    outline: 0;
+    background: #ffffff;
+}
+.but2 input{
+     border:1px solid #f0c800;
+    width:100px;
+    outline: 0;
+    background: #ffffff;
+}
+#ya{
+    height: 100px;
+}
+
+.imagezari img{
+    padding:3px;
+    
+}
+
+
+#overlay_t { 
+    background-color: #000; 
+    bottom: 0; 
+    left: 0; 
+    opacity: 0.5; 
+    filter: alpha(opacity = 50); /* IE7 & 8 */ 
+    position: fixed;
+    right: 0; 
+    top: 0; 
+    z-index: 99; 
+    display:none;
+}
+
+#popup_layer { 
+    width:400px; 
+    padding:50px;
+    margin-bottom:30px; 
+    background:#fff; 
+    border:solid 1px #ccc; 
+    position:absolute; 
+    top:260px; 
+    left:50%; 
+    margin-left:-200px; 
+    box-shadow: 0px 1px 20px #333; 
+    z-index:100; 
+    display:none;
+}
+
+
+.selectbox::-ms-expand { 
+  display: none;
+  border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
+}
+.selectbox {
+  width: 70%; /* 원하는 너비설정 */
+  height:35px;
+  padding: .4em .4em; /* 여백으로 높이 설정 */
+  font-family: inherit;  /* 폰트 상속 */
+  background: url("/image/select.png") no-repeat 100% 0%; /* 네이티브 화살표 대체 */
+  background-color: #ffffff;
+  border: 1px solid #f0c800; 
+  border-radius: 0px; /* iOS 둥근모서리 제거 */
+  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+  text-align-last: center;
+    display: block;
+}
+
+.selectbox option {
+    margin:40px;
+    background: #ffffff;
+    color:#000000;
+  border: 1px solid #f0c800; 
+
+    text-shadow:0 1px 0 #f0c800;
+}
+
+
+div #cabut{
+    float:left;
+    width: auto;
+    border:1px solid #f0c800;
+    width:50px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    height: 31px;
+    outline: 0;
+    background: #ffffff;
+    margin-right: 0px;
+}
+
+#folbut{
+    float: left;
+    border:1px solid #fffef4;
+    padding-left: 8px;
+    padding-right: 8px;
+    width:50px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    height: 38px;
+    outline: 0;
+    background: #fffef4; 
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+#selectzone{
+    display: inline-block;
+    
+}
+
+input:focus {
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+.row .incartbox{
+    padding: 40px;
+    
+}
+
+.row .incartbox input{
+    width: 50%;
+    display: inline;
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+  /*  border: 1px solid #ffffff; */
+
+}
+.row .incartbox select{
+     width: 50%;
+    display: inline;
+    background: url("/image/select.png") no-repeat 100% 0%; /* 네이티브 화살표 대체 */
+  background-color: #ffffff;
+  border: 1px solid #f0c800; 
+  border-radius: 0px; /* iOS 둥근모서리 제거 */
+  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+  text-align-last: center;
+}
+.row .incartbox label{
+    width:30%;
+}
+
+#incabu{
+    width:90px;
+    text-align: center;
+    
+    
+}
+
+.loading {
+ width: 100%;   
+ height: 100%;   
+ top: 0px;
+ left: 0px;
+ position: fixed;   
+ display: block;   
+ opacity: 0.7;   
+ background-color: #fff;   
+ z-index: 99;   
+ text-align: center; }  
+ 
+.loading-image {   
+ position: absolute;   
+ top: 50%;   
+ left: 50%;  
+ z-index: 100; 
+    
+} 
+
+.wow{
+ height: 33px;   
+ padding-left: 10px;
+ padding-right: 10px;
+ border : 2px solid #ffffff;
+ 
+}
+
+.wow:focus{
+   border-bottom-width: 2px;
+   border-bottom-color: #f0c800;
+}
+
+.bookmark{
+    width: 15px;
+    
+}
+.bookmarkzone{
+   padding-right: 20px;
+    
+    float: right;
+    padding-top: 0px;
+}
+.bookmarkzone img{
+    width:20px;
+}
+
+.booksetting img{
+    width:20px;
+}
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #cfccc2;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #cfccc2 transparent;
+}
+.popuptext a{
+    color:#ffffff;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+span.tip {
+
+    /* Required */
+    position: absolute;
+    z-index: 2;
+    display: none;
+
+    /* Optional */
+    font-size: 15px;
+    max-width: 150px;
+    height: auto;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px #666;
+    background: #FD0;
+} 
+
+#totop{
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+    z-index: 1000;
+    width:50px; 
+}
+
+#editimg{
+    width: 18px;
+}
+#go{
+    width:60px;
+}
+
+

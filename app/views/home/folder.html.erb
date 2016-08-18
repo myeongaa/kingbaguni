@@ -1,0 +1,55 @@
+<form class="myform" name = "myForm" style="padding-top:30px;" method="POST" enctype="multipart/form-data">
+
+  <% @fol2.each do |f| %>
+ <input type="checkbox" name="fol[]" value="<%= f.id %>" /><%= f.name%></br>
+  <% end %>
+    <div class="form-group">
+      
+        <a class="trigger">폴더 추가</a>
+        <div id="overlay_t"></div> 
+          <div id="popup_layer">폴더 이름을 입력하세요.
+          <input type="text" class="form-control" name="name" placeholder="폴더 이름">
+          <input type="submit" class="btn btn-default" value="추가" onclick='mySubmit(1)'>
+          <button type="button" class="btn btn-default" id ="close">닫기</button>
+          </div>
+        </div>
+    
+    <input id ="del" type="submit" class="btn btn-default" value="삭제" onclick='mySubmit(2)'>
+    
+</form>
+<script>
+
+function mySubmit(index) {
+      if (index == 1) {
+         
+        document.myForm.action='/home/fol_add';
+        
+      }
+     
+      if (index == 2) {
+       
+        document.myForm.action='/home/fol_del'; 
+      }
+     
+      document.myForm.submit();
+      
+    }
+    
+$( document ).ready(function() { 
+       $('.trigger').click(function(){ 
+        $('#popup_layer, #overlay_t').show(); 
+        $('#popup_layer').css("top", Math.max(0, $(window).scrollTop() + 100) + "px"); 
+        // $('#popup_layer').css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px"); 
+    }); 
+    $('#overlay_t, .close').click(function(e){ 
+        e.preventDefault(); 
+        $('#popup_layer, #overlay_t').hide(); 
+    }); 
+    $('#close').click(function(e){
+      e.preventDefault();
+       $('#popup_layer, #overlay_t').hide(); 
+    });
+});
+    
+</script>
+    

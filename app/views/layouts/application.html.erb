@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="/main.css" />
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>  
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/hanna.css">
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <!--[if lte IE 8]>
+  <script src="path/to/poly-checked.min.js"></script>
+  <![endif]-->
+  <script src="jQuery.min.js"></script>  
+  <script src="/jQuery.mousetip-master/jQuery.mousetip.js"></script>
+  <script src="/pace-master/pace.js"></script>
+  <link href="/pace-master/pace-theme-bounce.css" rel="stylesheet" />
+  <script src="/transit-master/jquery.transit.js"></script>
+  <link href="/fakerloader/fakeLoader.css" rel="stylesheet" />
+  <script src="/fakerloader/fakeLoader.min.js"></script>
+</head>
+<body>
+  
+<div id="fakeloader"></div>
+  <%= yield %>
+  <img class="img" id ="wku" src="/image/logo4.png">
+  <img  id = "cross" src="/image/cross.png">
+  <img class="img" id ="lion" src="/image/lion.png">
+  <input type="image" src="/image/totop3.png" id="totop" onclick="scrollWin()">
+  <div id="copyright">Copyright ⓒ멋쟁이사자처럼 in 원광대</div>
+
+</body>
+<script>
+
+
+$('.img').mouseover(function(){
+  $(this).transition({
+    perspective: '100px',
+    rotateY: '180deg'
+  });
+});
+$('.img').mouseleave(function(){
+  $(this).transition({
+    perspective: '100px',
+    rotateY: '0deg'
+  });
+});
+
+function scrollWin() {
+    window.scrollTo(0, 0);
+}
+
+$("#fakeloader").fakeLoader({
+    
+            timeToHide:1000, //Time in milliseconds for fakeLoader disappear
+            zIndex:9999, // Default zIndex
+            spinner:"spinner6",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7' 
+            bgColor:"#f0c800", //Hex, RGB or RGBA colors
+            //imagePath:"yourPath/customizedImage.gif" //If you want can you insert your custom image
+            
+    });
+  
+</script>
+</html>

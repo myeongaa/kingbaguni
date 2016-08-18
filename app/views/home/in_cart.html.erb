@@ -1,0 +1,83 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="/main.css" />
+
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <%= current_user.email   %>님  
+                <a href="/users/sign_out">로그아웃</a>
+            </div>
+        </div>
+    </nav>
+    <!--<div class="loading"><img class="loading-image" src="/image/25.gif" alt="Loading..." /></div>-->
+<div class="bodyform">
+   <div id="logoo">
+      <a href="/home/index"><img src="/image/king.png"></a>
+    </div>
+    <div class="row" id="ya">
+        <div class="col-md-3"></div>
+        <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/in_cart"><img id="incarti" src="/image/incart2.png"></a></div>
+        <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/index"><img id="carti" src="/image/cart.png"></a></div>
+        <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/purchase"><img id="purchasei" src="/image/purchase.png"></a></div>
+        <div class="col-md-3"></div>
+    </div>
+
+  <form class="myform" style="padding-top:30px;" action="/home/in_cart2" method="POST" enctype="multipart/form-data">
+  <div class="main2">
+  <div class="row" >
+      <div class="col-md-2"></div>
+      <div class="col-md-8 col-xs-12 col-sm-12" id="box" >
+        <div class="incartbox">
+            <div class="form-group">
+          <label>이름</label>  
+          <input type="text" class="wow" name="name" placeholder="이름">
+            </div>
+            
+            <div class="form-group">
+              <label>사진</label>
+              <input type="file" name="pic" accept="image/*">
+            </div>
+          
+            <div class="form-group">
+              <label >링크</label>
+              <input type="url" class="wow" name="url" placeholder="링크">
+            </div>
+            <div class="form-group">
+              <label >쇼핑몰 이름</label>
+              <input type="text" class="wow" name="s_name" placeholder="쇼핑몰 이름">
+            </div>
+            <div class="form-group">
+              <label >가격</label>
+              <input type="number" class="wow" name="price" placeholder="가격">
+            </div>
+            <div class="form-group">
+              <label >배송 비</label>
+              <input type="number" class="wow" name="d_price" placeholder="배송 비">
+            </div>
+             
+          <label >폴더</label>
+          <select class="wow" name="fol">
+            <option>폴더 선택</option>
+            <% @fol2.each do |f| %>
+            <option value="<%= f.id %>"><%= f.name %></option>
+            <% end %>
+          </select>
+          </br></br>
+          <div class="but2">
+            <input type="image" id="incabu" src="/image/get2.png" class="btn btn-default" value="담기" >
+        </div>
+        </div>
+      </div>
+    <div class="col-md-2"></div>
+    </div>
+    </div>
+    </form>
+  </div>
+  </body>
+  <script>
+     
+  </script>
+</html>

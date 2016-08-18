@@ -1,0 +1,48 @@
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <div class="bodyform">
+      <p>
+       <img id="king" src="/image/king.png">
+      </p>
+      <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div id="main">
+            <div id="log">
+              <h2>로그인</h2>
+              
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                  <%= f.label :이메일 %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+              
+                <div class="field">
+                  <%= f.label :비밀번호 %><br />
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+              
+                <% if devise_mapping.rememberable? -%>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :로그인상태유지 %>
+                  </div>
+                <% end -%>
+              
+                <div class="actions" >
+                  <%= f.submit "로그인" %>
+                </div>
+              <% end %>
+              </br>
+              <%= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+    </div>
+  </body>
+</html>

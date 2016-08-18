@@ -1,0 +1,40 @@
+<a href="/users/sign_out">로그아웃</a></br>
+<a href="/home/index">전체</a></br>
+<form name = "myForm" style="padding-top:30px;" action="/home/delete" method="POST" enctype="multipart/form-data">
+    카테고리 별로 보기
+   <select class="form-control" name="fol_id" id = "fol" onchange="location.href=this.value">
+                  <% @fol.each do |f| %>
+                    <% if @folid.to_i == f.id %>
+                      <option value="/home/<%= f.id %>/folder2" selected="selected" ><%= f.name %></option>
+                    <% else %>
+                      <option value="/home/<%= f.id %>/folder2"><%= f.name %></option>
+                    <% end %>
+                  <% end %>
+    </select>
+
+
+  <% sum = 0 %>
+      <% @fol2.each do |f|%>
+      <% sum += f.total %>
+  <%end%>
+  
+  TOTAL : <%= sum %>
+ 
+ <% @fol2.each do |f| %>
+    <img src="<%= f.image_url %>" /></br>
+        이름:<%= f.name %></br>
+        url:<a href='<%= f.url %>'><%= f.url %></a></br>
+        쇼핑몰이름:<%= f.s_name %></br>
+        가격:<%= f.price %></br>
+        배송비:<%= f.d_price %></br>
+        TOTAL:<%= f.total %></br> 
+ <% end %>
+</form>
+<script>
+  function mySubmit(index) {
+    var fol = $("#fol option:selected").val();
+    
+    document.myForm.submit();
+  }
+  
+</script>
