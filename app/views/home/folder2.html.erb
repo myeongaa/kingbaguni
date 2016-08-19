@@ -1,35 +1,121 @@
-<a href="/users/sign_out">로그아웃</a></br>
-<a href="/home/index">전체</a></br>
-<form name = "myForm" style="padding-top:30px;" action="/home/delete" method="POST" enctype="multipart/form-data">
-    카테고리 별로 보기
-   <select class="form-control" name="fol_id" id = "fol" onchange="location.href=this.value">
-                  <% @fol.each do |f| %>
-                    <% if @folid.to_i == f.id %>
-                      <option value="/home/<%= f.id %>/folder2" selected="selected" ><%= f.name %></option>
-                    <% else %>
-                      <option value="/home/<%= f.id %>/folder2"><%= f.name %></option>
-                    <% end %>
-                  <% end %>
-    </select>
+<html>
+  <head>
+      <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <%= current_user.email   %>
+                <a href="/users/sign_out"><img src="/image/logout.png"></a>
+            </div>
+        </div>
+    </nav>
+    <div class="bookmarkzone">
+    <div class="popup" onclick="myFunction()">
+      <img src="/image/star.png"> 즐겨찾기
+            <span class="popuptext" id="myPopup"> 
+              <% @book2.each do |b| %>
+                <span><img class ="bookmark"src="<%=b.url%>/favicon.ico" onError="this.src='/image/book.png'" border=0>
+                <a href = "<%=b.url%>" target="_blank"><%= b.name %></a></br></span>
+              <%end%>
+            </span>
+          </div>
+          <a href="/home/bookmark" class="booksetting"><img id="bookset" src="/image/setting.png" style="opacity:0.5;"></a>
+    </div>
+  <!--  <div class="loading"><img class="loading-image" src="/image/25.gif" alt="Loading..." /></div> -->
 
+    <div class="bodyform">
+      <div id="logoo" style="margin-top:40px;">
+        <a href="/home/index"><img src="/image/king.png" style="padding-top:30px;"></a>
+      </div>
+      <div class="row" id="ya">
+                <div class="col-md-3"></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/in_cart"><img id="incarti" src="/image/incart.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/index"><img id="carti" src="/image/cart2.png" class="navimg"></a></div>
+                <div class="col-md-2 col-xs-4 col-sm-4"><a href="/home/purchase"><img id="purchasei" src="/image/purchase.png" class="navimg"></a></div>
+                <div class="col-md-3"></div>
+      </div>
 
-  <% sum = 0 %>
-      <% @fol2.each do |f|%>
-      <% sum += f.total %>
-  <%end%>
-  
-  TOTAL : <%= sum %>
- 
- <% @fol2.each do |f| %>
-    <img src="<%= f.image_url %>" /></br>
-        이름:<%= f.name %></br>
-        url:<a href='<%= f.url %>'><%= f.url %></a></br>
-        쇼핑몰이름:<%= f.s_name %></br>
-        가격:<%= f.price %></br>
-        배송비:<%= f.d_price %></br>
-        TOTAL:<%= f.total %></br> 
- <% end %>
-</form>
+    
+    <form name = "myForm" style="padding-top:30px;" method="POST" enctype="multipart/form-data">
+       <% sum = 0 %>
+          <% @fol2.each do |f|%>
+          <% sum += f.total %>
+      <%end%>
+      <div class="main2">
+          <div class="row" >
+                <div class="col-md-2"></div>
+                <div class="col-md-8 col-xs-12 col-sm-12" id="box" >
+            <div class="row" >
+                <div class="col-md-1 col-xs-1 col-sm-1"></div>
+                <div class="col-md-4 col-xs-8 col-sm-8" id="selectzone">
+                 <select class="selectbox" name="fol_id" id = "fol" onchange="location.href=this.value">
+                                <% @fol.each do |f| %>
+                                  <% if @folid.to_i == f.id %>
+                                    <option value="/home/<%= f.id %>/folder2" selected="selected" ><%= f.name %></option>
+                                  <% else %>
+                                    <option value="/home/<%= f.id %>/folder2"><%= f.name %></option>
+                                  <% end %>
+                                <% end %>
+                  </select>
+            </div>
+                <div class="col-md-2 col-xs-3 col-sm-3" >
+                </div>
+                <div class="col-md-5"></div>
+          </div>
+          </br>
+          <table class="responstable">
+            <thead>
+              <tr>
+                <th colspan="3" >정보</th>
+                <th style="width:40%" colspan="2">가격</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @fol2.each do |f| %>
+                <tr class="cartrow">
+                  <td>
+                    <div class="imagezari">
+                      <% if f.image_url==nil %>
+                        <img src="/image/noimage.png" style="opacity:0.3;">
+                  		<% else%>
+                        <img src="<%= c.image_url %>" style="padding:8px;"/>
+                      <%end%>
+                    </div>
+                  </td>
+                  <td colspan="2">
+                    <%= f.name %></br>
+                    <%= f.s_name %><a href='<%= f.url %>' target="_blank"><img src="/image/go2.png" id="go"></a></br>
+                    
+                    <% unless f.folders.first == nil %>
+                      <%= f.folders.first.name %>
+                    <%end%>
+                    <a href="/home/<%=f.id%>/edit" ><img src="/image/edit.png" id="editimg"></a>
+                  </td>
+                  <td>
+                    <%= f.price.to_i %>원<br>
+                    <%= f.d_price.to_i %>원
+                  </td>
+                  <td >
+                    <%= f.total %>원
+                  </td>
+                </tr>
+              <%end%>
+              <tr id="won">
+                <td colspan="3"></td>
+                <td colspan="2"><%= sum %>원</td>
+              </tr>
+            </tbody>
+          </table>
+    
+         </div>
+          <div class="col-md-2"></div>
+       </div>
+     </div>
+    </form>
+</div>
+</body>
 <script>
   function mySubmit(index) {
     var fol = $("#fol option:selected").val();
@@ -37,4 +123,52 @@
     document.myForm.submit();
   }
   
+  $(".row a .navimg").mouseenter(function(){
+    
+	    $(this).css("width","120px"); 
+
+  });
+  $(".row a .navimg").mouseleave(function(){
+    
+	    $(this).css("width","110px"); 
+
+  });
+  $("#won").mouseenter(function(){
+    
+	    $(this).css("background-color","#fffef7"); 
+
+  });
+  
+  
+  $("#bookset").mouseenter(function(){
+    
+	    $(this).css("opacity","1"); 
+
+  });
+  $("#bookset").mouseleave(function(){
+    
+	    $(this).css("opacity","0.5"); 
+
+  });
+ 
+  function imgError(image){
+    image.style.display = 'none';
+  }
+  function myFunction() {
+      var popup = document.getElementById('myPopup');
+      popup.classList.toggle('show');
+  }
+  MediumLightbox('figure.zoom-effect', {
+  			//margin:300
+  		});
+  		$(function() {
+  
+      // Default
+      $('#mouse').mousetip('.tip');
+  
+      // Custom Position
+      $('#mouse').mousetip('.tip', 0, 0);
+  
+  });
 </script>
+</html>

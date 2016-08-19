@@ -177,7 +177,8 @@ class HomeController < ApplicationController
     @carts = Cart.all
     
     @fol2 = Folder.find_by_id(@folid).carts.reverse
-    
+    @book = Bookmark.all
+    @book2 = Bookmark.where("user_id LIKE ?",current_user)
   end
   
   def folder3     #구매목록 폴더 별로 보는 곳
@@ -186,6 +187,8 @@ class HomeController < ApplicationController
     @carts = Cart.all
     
     @fol2 = Folder.find_by_id(@folid).purchases.reverse
+    @book = Bookmark.all
+    @book2 = Bookmark.where("user_id LIKE ?",current_user)
   end
   
   def fol_add      #폴더 추가하는 곳
