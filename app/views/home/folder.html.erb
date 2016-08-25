@@ -47,15 +47,17 @@
               <% @fol2.each do |f| %>
              <input type="checkbox" name="fol[]" value="<%= f.id %>" /><%= f.name%></br>
               <% end %>
-                    <a class="trigger">폴더 추가</a>
+              <div id="bookdiv">
+                    <a class="trigger"><img src="/image/add2.png" id="bookadd"></a>
                     <div id="overlay_t"></div> 
                       <div id="popup_layer">폴더 이름을 입력하세요.</br></br>
                       <input class="poptxt" type="text" name="name" placeholder="폴더 이름"></br></br>
                       <input type="submit" class="btn btn-default" value="추가" onclick='mySubmit(1)'>
                       <button type="button" class="btn btn-default" id ="close">닫기</button>
                       </div>
-
-                <input id ="del" type="submit" class="btn btn-default" value="삭제" onclick='mySubmit(2)'>
+  
+                  <input type="image" src="/image/del.png"  id="bookdel" type="submit" value="삭제" onclick='mySubmit(2)'>
+                </div>
             </div>
             <div class="col-md-4"></div>
           </div>
